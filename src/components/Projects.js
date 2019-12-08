@@ -1,27 +1,30 @@
 import React, { Component } from 'react'
 import ProjectItem from './ProjectItem'
 
-function createProject() {
-    let modal = document.querySelector(".modal-container");
-    modal.classList.add('active')
-}
-
 class Projects extends Component {
-    constructor() {
-        super()
-        this.state = {
-
-        }
+    createProject() {
+        let modal = document.querySelector(".modal-container");
+        modal.classList.add('active')
     }
 
     render() {   
+        const projectsComponents = this.props.todos.map(todo =>
+            <ProjectItem 
+                key={todo.id}
+                title={todo.title}
+                description={todo.description}
+                priority={todo.priority}
+                tasks={todo.tasks}
+            />
+        )
+        
         return(
             <div className="projects">
                 <h1>Projects</h1>
                 
-                {/* <ProjectItem /> */}
+               {projectsComponents}
             
-                <button onClick={createProject}>Add Project</button>
+                <button onClick={this.createProject}>Add Project</button>
             </div>
         )
     }

@@ -4,24 +4,20 @@ import items from './../index'
 
 
 class Tasks extends Component {
-    constructor() {
-        super()
-        this.state = {
-            todos: items
-        }
-    }
-
     render() {
-
-        const taskComponents = this.state.todos.map(item => <TaskItem key={item.id} text={item.text} completed={item.completed} />)
-        
+                
         return(
             <div className="tasks">
                 <h1>
-                    Tasks
+                    {this.props.todos[0].title}
                 </h1>
+                <h3>
+                    {this.props.todos[0].description}
+                </h3>
                 
-                {taskComponents}
+                <TaskItem
+                    text={this.props.todos[0].tasks[0].title}
+                />
 
                 
                 <form className="new-task">
