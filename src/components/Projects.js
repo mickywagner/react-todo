@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
+import ProjectItem from './ProjectItem'
+
+function createProject() {
+    let modal = document.querySelector(".modal-container");
+    modal.classList.add('active')
+}
 
 class Projects extends Component {
+    constructor() {
+        super()
+        this.state = {
 
-    render() {
+        }
+    }
+
+    render() {   
         return(
             <div className="projects">
                 <h1>Projects</h1>
-                <ul>
-                    <li>One</li>
-                    <li>Two</li>
-                    <li>Three</li>
-                </ul>
-                <button>Add Project</button>
+                
+                {/* <ProjectItem /> */}
+            
+                <button onClick={createProject}>Add Project</button>
             </div>
         )
     }
 
 }
 
-let projects = []
 
 export default Projects

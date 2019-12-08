@@ -8,9 +8,11 @@ class TaskItem extends Component {
   render() {
     return (
       <div className="task-item">
-        <input type="checkbox" checked></input>
-
-        <p> Item One</p>
+        <input 
+          type="checkbox" 
+          checked={this.props.checked}
+        ></input>
+        <p>{this.props.text}</p>
       </div>
       
     );
