@@ -23,7 +23,7 @@ header {
     height: 75px;
     line-height: 35px;
     text-align: center;
-    background: rgba(100,149,237, 0.3);
+    background: linear-gradient( rgba(253, 236, 0, 0.6), rgba(253, 93, 0, 0.6));
     grid-column: span 2;
 }
 
@@ -36,10 +36,37 @@ header {
 .projects {
     grid-column: 1;
     grid-row: 2;
-    background: rgba(100,149,237, 0.3);
+    background: rgba(212, 216, 223, 0.3);
     margin-left: 10px;
     margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    
 }
+
+.projects > * {
+    flex-basis: 40px;
+}
+
+.projects button {
+    color: white;
+    text-shadow: 1px 1px black;
+    background: linear-gradient( rgba(253, 236, 0, 0.6), rgba(253, 93, 0, 0.6));
+    border: 1px solid rgba(253, 236, 0, 0.6);
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    font-weight: 600;
+    align-self: center;
+    margin-top: 10px;
+}
+
+button:focus {
+    outline: none;
+}
+
 
 /* 
 =========================================
@@ -50,12 +77,48 @@ header {
 .tasks {
     grid-column: 2;
     grid-row: 2;
-    background: rgba(100,149,237, 0.3);
+    background: rgba(212, 216, 223, 0.3);
     margin-right: 10px;
     margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    overflow: auto;
 }
 
 ul {
     list-style-type: none;
 }
+
+.tasks li {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.tasks input {
+    background: none;
+    border: none;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: white;
+}
+
+.task-item {
+    line-height: 50px;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: baseline;
+    padding: 10px;
+}
+
+.task-item input {
+    flex-basis: 20px;
+}
+
 

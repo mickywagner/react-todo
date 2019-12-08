@@ -9,6 +9,7 @@ class Projects extends Component {
                 <ul>
                     <li>One</li>
                     <li>Two</li>
+                    <li>Three</li>
                 </ul>
                 <button>Add Project</button>
             </div>
@@ -16,5 +17,7 @@ class Projects extends Component {
     }
 
 }
+
+let projects = []
 
 export default Projects

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TaskItem from './TaskItem'
 
 class Tasks extends Component {
     render() {
@@ -7,12 +8,14 @@ class Tasks extends Component {
                 <h1>
                     Tasks
                 </h1>
-                <ul>
-                    <li>One</li>
-                    <li>Two</li>
-                </ul>
+                <TaskItem />
+                <TaskItem />
+                <TaskItem />
+                
                 <form className="new-task">
-                        <input type="text" placeholder="+ New Task"></input>
+                        <label>+
+                        <input type="text" placeholder=" New Task"></input>
+                        </label>
                 </form> 
             </div>
         )
