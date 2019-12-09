@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import projectFactory from "./../projectFactory";
+import userProject from './../userProjects'
 
 class ProjectModal extends Component { 
   closeModal = () => {
@@ -8,17 +9,19 @@ class ProjectModal extends Component {
     document.forms["create-project"].reset();
   };
 
-//   submitProject = (e) => {
-//     e.preventDefault();
+  submitProject = (e) => {
+    e.preventDefault();
     
-//     const { project, description, date, priority } = e.target
-//     const id = Date.now()
-//     const newProject = projectFactory(id, project.value, description.value, date.value, priority.value)
+    const { project, description, date, priority } = e.target
+    const id = Date.now()
+    const newProject = projectFactory(id, project.value, description.value, date.value, priority.value)
+    userProject.push(newProject)
 
-//     userProject.push(newProject)
-//     console.log(userProject)
-//     this.closeModal()
-// };
+    this.props.handleChange()
+    console.log(userProject)
+    
+    this.closeModal()
+};
 
   render() {
     return (

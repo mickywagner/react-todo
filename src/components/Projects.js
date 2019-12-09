@@ -17,7 +17,7 @@ class Projects extends Component {
                 tasks={todo.tasks}
             />
         )
-        
+
         return(
             <div className="projects">
                 <h1>Projects</h1>

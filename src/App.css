@@ -9,7 +9,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 75px 1fr;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 250px 1fr;
     grid-gap: 20px;
     background: url("https://live.staticflickr.com/5511/14223028661_d3c1aeafc0_b.jpg");
 }
@@ -50,6 +50,17 @@ header {
     flex-basis: 40px;
 }
 
+.projects h1 {
+    margin-bottom: 15px;
+    width: 100%;
+    border-bottom: 2px solid white;
+}
+
+.projects p:hover {
+    cursor: pointer;
+    color: rgba(253, 249, 0, 0.884);
+}
+
 .projects button {
     color: white;
     text-shadow: 1px 1px black;
@@ -83,6 +94,12 @@ button:focus {
     display: flex;
     flex-flow: column;
     overflow: auto;
+}
+
+.tasks h3 {
+    font-weight: 200;
+    font-size: 15px;
+    padding-left: 5px;
 }
 
 ul {

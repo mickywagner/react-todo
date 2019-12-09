@@ -2,7 +2,7 @@ let userProject = [
     {
         id: 1575787976909,
         title: "Van Conversion",
-        description: "Creating tiny home on wheels from scratch",
+        description: "Creating tiny home on wheels from scratch in our 2004 Dodge Sprinter van.",
         dueDate: new Date(2020, 10, 1),
         priority: "",
         tasks: [

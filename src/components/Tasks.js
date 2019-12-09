@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TaskItem from './TaskItem'
-import items from './../index'
 
 
 class Tasks extends Component {

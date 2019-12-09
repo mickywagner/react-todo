@@ -14,13 +14,19 @@ class App extends Component {
     }
   }
 
+  handleChange = () => {
+    this.setState({
+      todos: userProject
+    })
+  }
+
   render() {
     return (
       <div className="container">
         <Header />
-        <ProjectModal />
+        <ProjectModal handleChange={this.handleChange}/>
         <Projects todos={this.state.todos}/>
-        <Tasks todos={this.state.todos}/>
+        <Tasks todos={this.state.todos} />
       </div>
     );
   }
