@@ -18,7 +18,9 @@ class ProjectModal extends Component {
     userProject.push(newProject)
 
     this.props.handleChange()
-    console.log(userProject[0])
+    // console.log(this.props.todos)
+    // console.log(this.props.current)
+
     
     this.closeModal()
 };

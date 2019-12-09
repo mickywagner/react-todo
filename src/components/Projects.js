@@ -15,6 +15,7 @@ class Projects extends Component {
                 description={todo.description}
                 priority={todo.priority}
                 tasks={todo.tasks}
+                changeProject={this.props.changeProject}
             />
         )
 
