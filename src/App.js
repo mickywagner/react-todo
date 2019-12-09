@@ -10,7 +10,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-        todos: userProject
+        todos: userProject,
+        current: userProject[0]
     }
   }
 
@@ -20,13 +21,14 @@ class App extends Component {
     })
   }
 
+
   render() {
     return (
       <div className="container">
         <Header />
         <ProjectModal handleChange={this.handleChange}/>
         <Projects todos={this.state.todos}/>
-        <Tasks todos={this.state.todos} />
+        <Tasks todos={this.state.todos} current={this.state.current}/>
       </div>
     );
   }

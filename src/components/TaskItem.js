@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 class TaskItem extends Component {
-  constructor() {
-    super();
-  }
 
   render() {
     return (

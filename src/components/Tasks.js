@@ -3,20 +3,22 @@ import TaskItem from './TaskItem'
 
 
 class Tasks extends Component {
+
     render() {
-                
+        const taskComponents = this.props.current.tasks.map(task => 
+            <TaskItem text={task.title}/>
+        )       
+        
         return(
             <div className="tasks">
                 <h1>
-                    {this.props.todos[0].title}
+                    {this.props.current.title}
                 </h1>
                 <h3>
-                    {this.props.todos[0].description}
+                    {this.props.current.description}
                 </h3>
                 
-                <TaskItem
-                    text={this.props.todos[0].tasks[0].title}
-                />
+                {taskComponents}
 
                 
                 <form className="new-task">
