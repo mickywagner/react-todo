@@ -24,17 +24,19 @@ class App extends Component {
 
   changeProject = (e) => {
     if(e.target.innerHTML !== this.state.current.title) {
-      let loser = this.state.todos.find(index => index.title === e.target.innerHTML)
-      console.log(loser)
-      console.log(this.state.todos)
+      let selectedTab = this.state.todos.find(index => index.title === e.target.innerHTML)
       this.setState({
-        current: loser
+        current: selectedTab
       })
     }
   }
 
-  addTask = () => {
-    console.log('I will add you to the state')
+  addTask = (item) => {
+     let current = this.state.current.tasks
+     current.push(item)
+     this.setState({
+       todos: userProject
+     })
   }
 
 

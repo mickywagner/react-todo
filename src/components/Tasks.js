@@ -5,10 +5,16 @@ class Tasks extends Component {
     submitTask = (e) => {
         e.preventDefault()
         const { newtask } = e.target
-        console.log(newtask.value)
-        // Add new value into current 
-        // Add new current into todos
-        this.props.addTask()
+
+        let taskToAdd = {}
+
+        taskToAdd = {
+            id: Date.now(),
+            title: newtask.value,
+            completed: false
+        }
+
+        this.props.addTask(taskToAdd)
         e.target.reset()
     }
   
