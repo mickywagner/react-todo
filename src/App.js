@@ -19,7 +19,6 @@ class App extends Component {
     this.setState({
       todos: userProject
     })
-    console.log(this.state.current)
   }
 
   changeProject = (e) => {
@@ -37,6 +36,15 @@ class App extends Component {
      this.setState({
        todos: userProject
      })
+  }
+
+  checkTask = (task) => {
+    let current = this.state.current.tasks
+    let foundTask = current.find(item => item.title === task)
+    foundTask.completed = !foundTask.completed
+    this.setState({
+      todos: userProject
+    })
   }
 
 
@@ -58,6 +66,7 @@ class App extends Component {
           todos={this.state.todos} 
           current={this.state.current}
           addTask={this.addTask}
+          checkTask={this.checkTask}
         />
       </div>
     );

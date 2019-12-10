@@ -21,9 +21,11 @@
 header {
     margin: 10px;
     height: 75px;
+    border: 1px solid rgba(253, 236, 0, 0.6);
     line-height: 35px;
+    font-size: 2em;
     text-align: center;
-    background: linear-gradient( rgba(253, 236, 0, 0.6), rgba(253, 93, 0, 0.6));
+    background: linear-gradient( rgb(255, 242, 60), rgba(253, 93, 0, 0.6));
     grid-column: span 2;
 }
 
@@ -43,6 +45,8 @@ header {
     flex-flow: column;
     justify-content: flex-start;
     align-items: baseline;
+    overflow: auto;
+    
     
 }
 
@@ -54,6 +58,10 @@ header {
     margin-bottom: 15px;
     width: 100%;
     border-bottom: 2px solid white;
+}
+
+.projects p {
+    margin: 15px 0;
 }
 
 .projects p:hover {

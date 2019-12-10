@@ -5,22 +5,23 @@ class Tasks extends Component {
     submitTask = (e) => {
         e.preventDefault()
         const { newtask } = e.target
-
         let taskToAdd = {}
-
         taskToAdd = {
             id: Date.now(),
             title: newtask.value,
             completed: false
         }
-
         this.props.addTask(taskToAdd)
         e.target.reset()
+    }
+
+    check = (taskText) => {
+        this.props.checkTask(taskText)
     }
   
     render() {
     const taskComponents = this.props.current.tasks.map(task => (
-      <TaskItem text={task.title} key={task.id} checked={task.completed} />
+      <TaskItem text={task.title} key={task.id} checked={task.completed} onChange={this.check}/>
     ));
 
     return (
