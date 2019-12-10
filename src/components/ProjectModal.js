@@ -17,7 +17,7 @@ class ProjectModal extends Component {
     const newProject = projectFactory(id, project.value, description.value, date.value, priority.value, [])
     userProject.push(newProject)
 
-    this.props.handleChange()
+    this.props.addProject()
 
 
     

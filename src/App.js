@@ -15,7 +15,7 @@ class App extends Component {
     }
   }
 
-  handleChange = () => {
+  addProject = () => {
     this.setState({
       todos: userProject
     })
@@ -31,8 +31,11 @@ class App extends Component {
         current: loser
       })
     }
-   
-}
+  }
+
+  addTask = () => {
+    console.log('I will add you to the state')
+  }
 
 
   render() {
@@ -40,7 +43,7 @@ class App extends Component {
       <div className="container">
         <Header />
         <ProjectModal 
-          handleChange={this.handleChange}
+          addProject={this.addProject}
           todos={this.state.todos} 
           current={this.state.current} 
         />
@@ -52,6 +55,7 @@ class App extends Component {
         <Tasks 
           todos={this.state.todos} 
           current={this.state.current}
+          addTask={this.addTask}
         />
       </div>
     );

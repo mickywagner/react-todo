@@ -2,7 +2,17 @@ import React, { Component } from "react";
 import TaskItem from "./TaskItem";
 
 class Tasks extends Component {
-  render() {
+    submitTask = (e) => {
+        e.preventDefault()
+        const { newtask } = e.target
+        console.log(newtask.value)
+        // Add new value into current 
+        // Add new current into todos
+        this.props.addTask()
+        e.target.reset()
+    }
+  
+    render() {
     const taskComponents = this.props.current.tasks.map(task => (
       <TaskItem text={task.title} key={task.id} checked={task.completed} />
     ));
@@ -14,9 +24,9 @@ class Tasks extends Component {
 
         {taskComponents}
 
-        <form className="new-task">
+        <form className="new-task" onSubmit={this.submitTask} name="add-task">
           <label>
-            +<input type="text" placeholder=" New Task"></input>
+            +<input type="text" placeholder=" New Task" name="newtask"></input>
           </label>
         </form>
       </div>
