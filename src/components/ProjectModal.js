@@ -14,12 +14,11 @@ class ProjectModal extends Component {
     
     const { project, description, date, priority } = e.target
     const id = Date.now()
-    const newProject = projectFactory(id, project.value, description.value, date.value, priority.value)
+    const newProject = projectFactory(id, project.value, description.value, date.value, priority.value, [])
     userProject.push(newProject)
 
     this.props.handleChange()
-    // console.log(this.props.todos)
-    // console.log(this.props.current)
+
 
     
     this.closeModal()

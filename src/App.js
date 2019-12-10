@@ -19,11 +19,14 @@ class App extends Component {
     this.setState({
       todos: userProject
     })
+    console.log(this.state.current)
   }
 
   changeProject = (e) => {
     if(e.target.innerHTML !== this.state.current.title) {
       let loser = this.state.todos.find(index => index.title === e.target.innerHTML)
+      console.log(loser)
+      console.log(this.state.todos)
       this.setState({
         current: loser
       })
