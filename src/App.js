@@ -5,6 +5,8 @@ import Projects from './components/Projects'
 import Tasks from './components/Tasks'
 import ProjectModal from './components/ProjectModal';
 import userProject from './userProjects'
+import setLocalStorage from './setLocalStorage'
+
 
 class App extends Component {
   constructor() {
@@ -15,7 +17,18 @@ class App extends Component {
     }
   }
 
-  addProject = () => {
+  componentDidMount() {
+    const savedProjects = localStorage.getItem('savedProjects')
+    let userProject = JSON.parse(savedProjects)
+    this.setState({
+      todos: userProject
+    })
+    
+  }
+
+  addProject = (newProject) => {
+    userProject.push(newProject) 
+    setLocalStorage(userProject)
     this.setState({
       todos: userProject
     })
@@ -33,6 +46,7 @@ class App extends Component {
   addTask = (item) => {
      let current = this.state.current.tasks
      current.push(item)
+     setLocalStorage(userProject)
      this.setState({
        todos: userProject
      })
@@ -42,6 +56,7 @@ class App extends Component {
     let current = this.state.current.tasks
     let foundTask = current.find(item => item.title === task)
     foundTask.completed = !foundTask.completed
+    setLocalStorage(userProject)
     this.setState({
       todos: userProject
     })

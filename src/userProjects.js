@@ -3,7 +3,7 @@ let userProject = [
         id: 1575787976909,
         title: "Van Conversion",
         description: "Creating tiny home on wheels from scratch in our 2004 Dodge Sprinter van.",
-        dueDate: new Date(2020, 10, 1),
+        dueDate: "10/1/2019",
         priority: "",
         tasks: [
             {
@@ -27,7 +27,7 @@ let userProject = [
         id: 1575787976910,
         title: "Walk the Dog",
         description: "Keeping healthy",
-        dueDate: new Date(2020, 10, 2),
+        dueDate: "12/8/2019",
         priority: "",
         tasks: []
     },

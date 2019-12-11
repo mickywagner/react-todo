@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 class TaskItem extends Component {
   render() {
@@ -16,6 +18,7 @@ class TaskItem extends Component {
           onChange={() => { this.props.onChange(this.props.text)}}
         ></input>
         <p style={this.props.checked ? completedStyle : null }>{this.props.text}</p>
+        <p onClick={()=> console.log('delete')}><FontAwesomeIcon icon={faTrashAlt}/></p>
       </div>
       
     );

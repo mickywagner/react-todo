@@ -26,7 +26,7 @@ class Tasks extends Component {
 
     return (
       <div className="tasks">
-        <h1>{this.props.current.title}</h1>
+        <h1>{this.props.current.title}<span class="date">Due: {this.props.current.dueDate}<div>0 Tasks remaining</div></span></h1>
         <h3>{this.props.current.description}</h3>
 
         {taskComponents}
