@@ -18,19 +18,29 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const savedProjects = localStorage.getItem('savedProjects')
-    let userProject = JSON.parse(savedProjects)
-    this.setState({
-      todos: userProject
-    })
-    
+    const savedProjects = JSON.parse(localStorage.getItem('savedProjects'))
+    if(savedProjects) {
+      this.setState({
+        todos: savedProjects,
+        current: savedProjects[0]
+      })
+    } else {
+      setLocalStorage(userProject)
+      this.setState({
+        todos: userProject,
+        current: userProject[0]
+      })
+    }
   }
 
   addProject = (newProject) => {
-    userProject.push(newProject) 
-    setLocalStorage(userProject)
-    this.setState({
-      todos: userProject
+    this.setState(prevState => {
+      const updatedProject = prevState.todos
+      updatedProject.push(newProject)
+      setLocalStorage(updatedProject)
+      return {
+        todos: updatedProject
+      }
     })
   }
 
@@ -46,7 +56,6 @@ class App extends Component {
   addTask = (item) => {
      let current = this.state.current.tasks
      current.push(item)
-     setLocalStorage(userProject)
      this.setState({
        todos: userProject
      })
@@ -56,7 +65,6 @@ class App extends Component {
     let current = this.state.current.tasks
     let foundTask = current.find(item => item.title === task)
     foundTask.completed = !foundTask.completed
-    setLocalStorage(userProject)
     this.setState({
       todos: userProject
     })
