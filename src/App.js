@@ -44,21 +44,24 @@ class App extends Component {
     })
   }
 
-  changeProject = (e) => {
-    if(e.target.innerHTML !== this.state.current.title) {
+  changeProject = (e) => { 
       let selectedTab = this.state.todos.find(index => index.title === e.target.innerHTML)
       this.setState({
         current: selectedTab
       })
-    }
   }
+  
 
   addTask = (item) => {
-     let current = this.state.current.tasks
-     current.push(item)
-     this.setState({
-       todos: userProject
-     })
+    this.setState(prevState => {
+      const updatedCurrent = prevState.current
+      updatedCurrent.tasks.push(item)
+      setLocalStorage(prevState.todos)
+      return {
+        todos: prevState.todos,
+        current: updatedCurrent
+      }
+    })
   }
 
   checkTask = (task) => {
