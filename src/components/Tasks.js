@@ -28,9 +28,11 @@ class Tasks extends Component {
       <TaskItem text={task.title} key={task.id} checked={task.completed} onChange={this.check} removeTask={this.removeTask}/>
     ));
 
+    const incompleteTasks = this.props.current.tasks.filter(task => task.completed === false)
+
     return (
       <div className="tasks">
-        <h1>{this.props.current.title}<span class="date">Due: {this.props.current.dueDate}<div>0 Tasks remaining</div></span></h1>
+    <h1>{this.props.current.title}<span class="date">Due: {this.props.current.dueDate}<div>{incompleteTasks.length} Tasks remaining</div></span></h1>
         <h3>{this.props.current.description ? this.props.current.description : <input type="text" placeholder="Add a description" name="description"></input>}</h3>
 
         {taskComponents}
