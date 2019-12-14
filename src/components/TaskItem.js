@@ -17,8 +17,14 @@ class TaskItem extends Component {
           checked={this.props.checked}
           onChange={() => { this.props.onChange(this.props.text)}}
         ></input>
-        <p style={this.props.checked ? completedStyle : null }>{this.props.text}</p>
-        <p onClick={()=> console.log('delete')}><FontAwesomeIcon icon={faTrashAlt}/></p>
+        <ul>
+          <li style={this.props.checked ? completedStyle : null }>
+            {this.props.text} 
+            <FontAwesomeIcon
+              icon={faTrashAlt} 
+              onClick={(e)=> this.props.removeTask(e.currentTarget.parentElement.innerText)}/>
+          </li>
+        </ul>
       </div>
       
     );

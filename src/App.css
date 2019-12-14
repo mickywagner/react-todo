@@ -1,4 +1,9 @@
 @import url('/font-awesome-4.6.3/css/font-awesome.min.css');
+:root {
+    --main-color: rgb(87,129,163);
+    --second-color: rgb(140,165,185);
+    --bg-color: rgba(57, 58, 59, 0.3);
+}
 
 * {
     margin: 0;
@@ -13,7 +18,10 @@
     grid-template-rows: 75px 1fr;
     grid-template-columns: 250px 1fr;
     grid-gap: 20px;
-    background: url("https://live.staticflickr.com/5511/14223028661_d3c1aeafc0_b.jpg");
+    background: url("https://live.staticflickr.com/3874/14911878962_b865310cd6_b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .container > * {
@@ -23,11 +31,11 @@
 header {
     margin: 10px;
     height: 75px;
-    border: 1px solid rgba(253, 236, 0, 0.6);
     line-height: 35px;
     font-size: 2em;
     text-align: center;
-    background: linear-gradient( rgb(255, 242, 60), rgba(253, 93, 0, 0.6));
+    background: linear-gradient(var(--main-color), var(--second-color));
+   
     grid-column: span 2;
 }
 
@@ -40,7 +48,7 @@ header {
 .projects {
     grid-column: 1;
     grid-row: 2;
-    background: rgba(212, 216, 223, 0.3);
+    background: var(--bg-color);
     margin-left: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -74,14 +82,19 @@ header {
 .projects button {
     color: white;
     text-shadow: 1px 1px black;
-    background: linear-gradient( rgba(253, 236, 0, 0.6), rgba(253, 93, 0, 0.6));
-    border: 1px solid rgba(253, 236, 0, 0.6);
+    background: linear-gradient(var(--main-color), var(--second-color));
+    border: 1px solid var(--bg-color);
     height: 30px;
     width: 100px;
     border-radius: 15px;
     font-weight: 600;
+    font-size: 15px;
     align-self: center;
     margin-top: 10px;
+}
+
+button:hover{
+    background: linear-gradient( rgb(253, 186, 0), rgb(253, 0, 76))
 }
 
 button:focus {
@@ -98,7 +111,7 @@ button:focus {
 .tasks {
     grid-column: 2;
     grid-row: 2;
-    background: rgba(212, 216, 223, 0.3);
+    background: rgba(57, 58, 59, 0.3);
     margin-right: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -113,7 +126,14 @@ button:focus {
     margin-top: 10px;
 }
 
-.tasks .date{
+.tasks input[name=description] {
+    font-weight: 200;
+    font-size: 15px;
+    padding-left: 5px;
+    margin-top: 10px;
+}
+
+.tasks .date {
     float: right;
     font-size: 15px;
     font-weight: 400;
@@ -126,16 +146,23 @@ button:focus {
     margin-top: 5px;
 }
 
-ul {
+.tasks ul {
     list-style-type: none;
+    width: 100%;
 }
 
 .tasks li {
     padding-top: 10px;
     padding-left: 10px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
 }
 
-
+.tasks svg {
+    font-size: 12px;
+    align-self: center;
+}
 
 .tasks input {
     background: none;
@@ -152,30 +179,33 @@ input::placeholder {
     color: white;
 }
 
+.tasks .btns {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btns button {
+    color: white;
+    text-shadow: 1px 1px black;
+    background: linear-gradient(var(--main-color), var(--second-color));
+    border: 1px solid var(--bg-color);
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 10px;
+    padding: 10px;
+    align-self: flex-end;
+}
+
 .task-item {
-    line-height: 50px;
+    line-height: 40px;
     border-bottom: 1px solid black;
     display: flex;
     align-items: baseline;
     padding: 10px;
 }
-
-.task-item input {
-    flex-basis: 20px;
-}
-
-.task-item p:last-child {
-    font-weight: 500;
-    flex: 1;
-    font-size: 12px;
-    text-align: right;
-}
-
-
-
-
-
-
 
 
 /* 

@@ -64,12 +64,29 @@ class App extends Component {
     })
   }
 
+  deleteTask = (item) => {
+    this.setState(prevState => {
+      const updatedCurrent = prevState.current
+      const task = updatedCurrent.tasks.find(index => index.title === item) 
+      const taskIndex = updatedCurrent.tasks.indexOf(task)
+      updatedCurrent.tasks.splice(taskIndex, 1)
+      setLocalStorage(prevState.todos)
+      return {
+        todos: prevState.todos,
+        current: updatedCurrent
+      }
+    })
+  }
+ 
   checkTask = (task) => {
-    let current = this.state.current.tasks
-    let foundTask = current.find(item => item.title === task)
-    foundTask.completed = !foundTask.completed
-    this.setState({
-      todos: userProject
+    this.setState(prevState => {
+      const updateCompleted = prevState.current.tasks
+      const foundTask = updateCompleted.find(item => item.title === task)
+      foundTask.completed = !foundTask.completed
+      setLocalStorage(prevState.todos)
+      return {
+        todos: prevState.todos
+      }
     })
   }
 
@@ -93,6 +110,7 @@ class App extends Component {
           current={this.state.current}
           addTask={this.addTask}
           checkTask={this.checkTask}
+          deleteTask={this.deleteTask}
         />
       </div>
     );
