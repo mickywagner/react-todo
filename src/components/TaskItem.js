@@ -18,7 +18,7 @@ class TaskItem extends Component {
           onChange={() => { this.props.onChange(this.props.text)}}
         ></input>
         <ul>
-          <li style={this.props.checked ? completedStyle : null }>
+          <li style={this.props.checked ? completedStyle : null } id={this.props.key} >
             {this.props.text} 
             <FontAwesomeIcon
               icon={faTrashAlt} 

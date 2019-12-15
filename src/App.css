@@ -226,7 +226,7 @@ input::placeholder {
 }
 
 .modal {
-    background: linear-gradient( rgba(253, 236, 0), rgba(253, 93, 0));
+    background: linear-gradient(var(--main-color), var(--second-color));
     border-radius: 10px;
     width: 200px;
     height: 290px;

@@ -2,38 +2,69 @@ import React, { Component } from "react";
 import TaskItem from "./TaskItem";
 
 class Tasks extends Component {
-    submitTask = (e) => {
-        e.preventDefault()
-        const { newtask } = e.target
-        let taskToAdd = {}
-        taskToAdd = {
-            id: Date.now(),
-            title: newtask.value,
-            completed: false
-        }
-        this.props.addTask(taskToAdd)
-        e.target.reset()
-    }
+  submitTask = e => {
+    e.preventDefault();
+    const { newtask } = e.target;
+    let taskToAdd = {};
+    taskToAdd = {
+      id: Date.now(),
+      title: newtask.value,
+      completed: false
+    };
+    this.props.addTask(taskToAdd);
+    e.target.reset();
+  };
 
-    check = (taskText) => {
-        this.props.checkTask(taskText)
-    }
+  check = taskText => {
+    this.props.checkTask(taskText);
+  };
 
-    removeTask = (taskText) => {
-      this.props.deleteTask(taskText)
-    }
-  
-    render() {
+  removeTask = taskText => {
+    this.props.deleteTask(taskText);
+  };
+
+  removeProject = currentProject => {
+    this.props.deleteProject(currentProject);
+  };
+
+  render() {
     const taskComponents = this.props.current.tasks.map(task => (
-      <TaskItem text={task.title} key={task.id} checked={task.completed} onChange={this.check} removeTask={this.removeTask}/>
+      <TaskItem
+        text={task.title}
+        key={task.id}
+        checked={task.completed}
+        onChange={this.check}
+        removeTask={this.removeTask}
+      />
     ));
 
-    const incompleteTasks = this.props.current.tasks.filter(task => task.completed === false)
+    const incompleteTasks = this.props.current.tasks.filter(
+      task => task.completed === false
+    );
+    const completeTasks = this.props.current.tasks.filter(
+      task => task.completed === true
+    );
 
     return (
       <div className="tasks">
-    <h1>{this.props.current.title}<span class="date">Due: {this.props.current.dueDate}<div>{incompleteTasks.length} Tasks remaining</div></span></h1>
-        <h3>{this.props.current.description ? this.props.current.description : <input type="text" placeholder="Add a description" name="description"></input>}</h3>
+        <h1>
+          {this.props.current.title}
+          <span class="date">
+            Due: {this.props.current.dueDate}
+            <div>{incompleteTasks.length} Tasks remaining</div>
+          </span>
+        </h1>
+        <h3>
+          {this.props.current.description ? (
+            this.props.current.description
+          ) : (
+            <input
+              type="text"
+              placeholder="Add a description"
+              name="description"
+            ></input>
+          )}
+        </h3>
 
         {taskComponents}
 
@@ -43,10 +74,13 @@ class Tasks extends Component {
           </label>
         </form>
         <div className="btns">
-          <button onClick={() => console.log(this.props.current)}>Delete Project</button>
-          <button onClick={() => console.log('remove complete tasks')}>Remove Completed Tasks</button>
+          <button onClick={() => this.removeProject(this.props.current.id)}>
+            Delete Project
+          </button>
+          <button onClick={() => console.log({ completeTasks })}>
+            Remove Completed Tasks
+          </button>
         </div>
-        
       </div>
     );
   }

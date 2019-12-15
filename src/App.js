@@ -39,7 +39,8 @@ class App extends Component {
       updatedProject.push(newProject)
       setLocalStorage(updatedProject)
       return {
-        todos: updatedProject
+        todos: updatedProject,
+        current: updatedProject[0]
       }
     })
   }
@@ -90,6 +91,27 @@ class App extends Component {
     })
   }
 
+  deleteProject = (project) => {
+    this.setState(prevState => {
+      const updatedTodos = prevState.todos
+      const deletedProject = updatedTodos.find(todo => todo.id === project.id)
+      const index = updatedTodos.indexOf(deletedProject)
+      updatedTodos.splice(index, 1)
+      setLocalStorage(prevState.todos)
+      if(updatedTodos.length < 1) {
+        return {
+          todos: [],
+          current: []
+        }
+      } else {
+        return {
+          todos: updatedTodos,
+          current: updatedTodos[0]
+        }
+      }
+    })
+  }
+
 
   render() {
     return (
@@ -105,13 +127,17 @@ class App extends Component {
           current={this.state.current} 
           changeProject={this.changeProject}
         />
-        <Tasks 
+        {this.state.todos.length > 0 ? 
+          <Tasks 
           todos={this.state.todos} 
           current={this.state.current}
           addTask={this.addTask}
           checkTask={this.checkTask}
           deleteTask={this.deleteTask}
-        />
+          deleteProject={this.deleteProject}
+        /> : null
+        }
+        
       </div>
     );
   }
