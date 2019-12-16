@@ -15,14 +15,14 @@ class TaskItem extends Component {
         <input 
           type="checkbox" 
           checked={this.props.checked}
-          onChange={() => { this.props.onChange(this.props.text)}}
+          onChange={() => { this.props.onChange(this.props.id) }}
         ></input>
         <ul>
-          <li style={this.props.checked ? completedStyle : null } id={this.props.key} >
+          <li style={this.props.checked ? completedStyle : null } id={this.props.id} >
             {this.props.text} 
             <FontAwesomeIcon
               icon={faTrashAlt} 
-              onClick={(e)=> this.props.removeTask(e.currentTarget.parentElement.innerText)}/>
+              onClick={(e)=> this.props.removeTask(e.currentTarget.parentElement.id)}/>
           </li>
         </ul>
       </div>
@@ -32,3 +32,4 @@ class TaskItem extends Component {
 }
 
 export default TaskItem;
+

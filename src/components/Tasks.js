@@ -15,13 +15,19 @@ class Tasks extends Component {
     e.target.reset();
   };
 
-  check = taskText => {
-    this.props.checkTask(taskText);
+  check = taskId => {
+    this.props.checkTask(taskId);
   };
 
-  removeTask = taskText => {
-    this.props.deleteTask(taskText);
+  removeTask = taskId => {
+    this.props.deleteTask(taskId);
   };
+
+  removeMultipleTasks = (tasks) => {
+    tasks.forEach(task => {
+      this.props.deleteTask(task.id)
+    })
+  }
 
   removeProject = currentProject => {
     this.props.deleteProject(currentProject);
@@ -31,7 +37,7 @@ class Tasks extends Component {
     const taskComponents = this.props.current.tasks.map(task => (
       <TaskItem
         text={task.title}
-        key={task.id}
+        id={task.id}
         checked={task.completed}
         onChange={this.check}
         removeTask={this.removeTask}
@@ -77,7 +83,7 @@ class Tasks extends Component {
           <button onClick={() => this.removeProject(this.props.current.id)}>
             Delete Project
           </button>
-          <button onClick={() => console.log({ completeTasks })}>
+          <button onClick={() => this.removeMultipleTasks(completeTasks)}>
             Remove Completed Tasks
           </button>
         </div>

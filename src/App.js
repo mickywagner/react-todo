@@ -68,8 +68,8 @@ class App extends Component {
   deleteTask = (item) => {
     this.setState(prevState => {
       const updatedCurrent = prevState.current
-      const task = updatedCurrent.tasks.find(index => index.title === item) 
-      const taskIndex = updatedCurrent.tasks.indexOf(task)
+      const deletedTask = updatedCurrent.tasks.find(task => Number(task.id) === Number(item))
+      const taskIndex = updatedCurrent.tasks.indexOf(deletedTask)
       updatedCurrent.tasks.splice(taskIndex, 1)
       setLocalStorage(prevState.todos)
       return {
@@ -82,7 +82,7 @@ class App extends Component {
   checkTask = (task) => {
     this.setState(prevState => {
       const updateCompleted = prevState.current.tasks
-      const foundTask = updateCompleted.find(item => item.title === task)
+      const foundTask = updateCompleted.find(item => Number(item.id) === Number(task))
       foundTask.completed = !foundTask.completed
       setLocalStorage(prevState.todos)
       return {
