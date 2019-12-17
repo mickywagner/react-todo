@@ -11,6 +11,7 @@ class Projects extends Component {
         const projectsComponents = this.props.todos.map(todo =>
             <ProjectItem 
                 key={todo.id}
+                id={todo.id}
                 title={todo.title}
                 description={todo.description}
                 priority={todo.priority}
@@ -21,11 +22,13 @@ class Projects extends Component {
 
         return(
             <div className="projects">
-                <h1>Projects</h1>
+                <h1>Projects<span class="mobile-project-add"><button onClick={this.createProject}>Add Project</button></span></h1>
                 
-               {projectsComponents}
+                <div class="projects-container">
+                 {projectsComponents}
             
-                <button onClick={this.createProject}>Add Project</button>
+                    <button onClick={this.createProject}>Add Project</button>
+                </div>
             </div>
         )
     }

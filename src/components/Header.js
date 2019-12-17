@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
     return(
         <header>
-            Hello! Let's get shit done!
+            <h1>ToDo App</h1>
         </header>
     )
 }

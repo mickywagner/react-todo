@@ -40,13 +40,13 @@ class App extends Component {
       setLocalStorage(updatedProject)
       return {
         todos: updatedProject,
-        current: updatedProject[0]
+        current: updatedProject[updatedProject.length - 1]
       }
     })
   }
 
   changeProject = (e) => { 
-      let selectedTab = this.state.todos.find(index => index.title === e.target.innerHTML)
+      let selectedTab = this.state.todos.find(index => Number(index.id) === Number(e.target.id))
       this.setState({
         current: selectedTab
       })
@@ -94,7 +94,7 @@ class App extends Component {
   deleteProject = (project) => {
     this.setState(prevState => {
       const updatedTodos = prevState.todos
-      const deletedProject = updatedTodos.find(todo => todo.id === project.id)
+      const deletedProject = updatedTodos.find(todo => Number(todo.id) === Number(project))
       const index = updatedTodos.indexOf(deletedProject)
       updatedTodos.splice(index, 1)
       setLocalStorage(prevState.todos)
@@ -106,7 +106,7 @@ class App extends Component {
       } else {
         return {
           todos: updatedTodos,
-          current: updatedTodos[0]
+          current: updatedTodos[index - 1]
         }
       }
     })

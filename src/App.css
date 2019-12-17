@@ -2,7 +2,7 @@
 :root {
     --main-color: rgb(87,129,163);
     --second-color: rgb(140,165,185);
-    --bg-color: rgba(57, 58, 59, 0.3);
+    --bg-color: rgba(57, 58, 59, 0.575);
 }
 
 * {
@@ -35,8 +35,12 @@ header {
     font-size: 2em;
     text-align: center;
     background: linear-gradient(var(--main-color), var(--second-color));
-   
     grid-column: span 2;
+}
+
+header h1 {
+    font-size: 30px;
+    text-align: left;
 }
 
 /* 
@@ -55,17 +59,19 @@ header {
     flex-flow: column;
     justify-content: flex-start;
     align-items: baseline;
-    overflow: auto;
-    
-    
+    overflow: auto;     
 }
 
-.projects > * {
-    flex-basis: 40px;
+.projects-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+
 }
 
 .projects h1 {
     margin-bottom: 15px;
+    line-height: 30px;
     width: 100%;
     border-bottom: 2px solid white;
 }
@@ -94,13 +100,33 @@ header {
 }
 
 button:hover{
-    background: linear-gradient( rgb(253, 186, 0), rgb(253, 0, 76))
+    background: linear-gradient( var(--second-color), var(--main-color))
 }
 
 button:focus {
     outline: none;
 }
 
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    background: rgba(39, 126, 207, 0.699);
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.project-item span {
+    flex: 50px;
+    text-align: right;
+}
+
+.mobile-project-add {
+    display: none;
+}
 
 /* 
 =========================================
@@ -111,7 +137,7 @@ button:focus {
 .tasks {
     grid-column: 2;
     grid-row: 2;
-    background: rgba(57, 58, 59, 0.3);
+    background: var(--bg-color);
     margin-right: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -285,4 +311,44 @@ input::placeholder {
     display: flex;
 }
 
+@media only screen and (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-flow: column;
+    }
 
+    .projects, .tasks {
+        margin: 10px;
+    }
+
+    .tasks {
+        flex-grow: 3;
+    }
+
+    .projects {
+        overflow: visible;
+        display: relative;
+        flex-basis: 75px;
+    }
+    
+    .projects-container button {
+        display: none;
+    }
+
+    .projects-container {
+        display: none;
+    }
+
+    .mobile-project-add {
+        display: block;
+        float: right;
+        position: relative;
+        bottom: 10px;  
+    }
+
+    .projects:hover .projects-container {
+        display: flex;
+        flex-flow: column;
+        overflow: visible;
+    }
+}
