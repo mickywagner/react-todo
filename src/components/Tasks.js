@@ -15,6 +15,12 @@ class Tasks extends Component {
     e.target.reset();
   };
 
+  submitDescription = e => {
+    e.preventDefault();
+    const { newdescription } = e.target;
+    this.props.addDescription(newdescription.value);
+  };
+
   check = taskId => {
     this.props.checkTask(taskId);
   };
@@ -23,11 +29,11 @@ class Tasks extends Component {
     this.props.deleteTask(taskId);
   };
 
-  removeMultipleTasks = (tasks) => {
+  removeMultipleTasks = tasks => {
     tasks.forEach(task => {
-      this.props.deleteTask(task.id)
-    })
-  }
+      this.props.deleteTask(task.id);
+    });
+  };
 
   removeProject = currentProject => {
     this.props.deleteProject(currentProject);
@@ -56,37 +62,48 @@ class Tasks extends Component {
         <h1>
           {this.props.current.title}
           <span class="date">
-            Due: {this.props.current.dueDate}
+            {this.props.current.dueDate
+              ? "Due: " + this.props.current.dueDate
+              : null}
             <div>{incompleteTasks.length} Tasks remaining</div>
           </span>
         </h1>
+
         <h3>
           {this.props.current.description ? (
             this.props.current.description
           ) : (
-            <input
-              type="text"
-              placeholder="Add a description"
-              name="description"
-            ></input>
+            <form name="add-description" onSubmit={this.submitDescription}>
+              <input
+                type="text"
+                placeholder="Add a description"
+                name="newdescription"
+              ></input>
+            </form>
           )}
         </h3>
 
         {taskComponents}
 
-        <form className="new-task" onSubmit={this.submitTask} name="add-task">
-          <label>
-            +<input type="text" placeholder=" New Task" name="newtask"></input>
-          </label>
-        </form>
-        <div className="btns">
-          <button onClick={() => this.removeProject(this.props.current.id)}>
-            Delete Project
-          </button>
-          <button onClick={() => this.removeMultipleTasks(completeTasks)}>
-            Remove Completed Tasks
-          </button>
+        {this.props.current.title === "All Tasks" ? (null) : (
+            <form className="new-task" onSubmit={this.submitTask} name="add-task">
+              <label>
+                +<input type="text" placeholder=" New Task" name="newtask"></input>
+              </label>
+            </form>
+            
+        )}
+
+      {this.props.current.title === "All Tasks" ? (null) :
+        (<div className="btns">
+              <button onClick={() => this.removeProject(this.props.current.id)}>
+                Delete Project
+              </button>
+              <button onClick={() => this.removeMultipleTasks(completeTasks)}>
+                Remove Completed Tasks
+              </button>
         </div>
+        )}
       </div>
     );
   }

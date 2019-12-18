@@ -45,13 +45,40 @@ class App extends Component {
     })
   }
 
+  allTasks = (tasksAll) => {
+    this.setState( prevState => {
+      const newCurrent = 
+            {
+              id: 19,
+              title: "All Tasks",
+              description: "combined tasks",
+              dueDate: "",
+              priority: "✮ ✮ ✮",
+              tasks: tasksAll
+            }
+      return {
+        current: newCurrent
+      }
+    })
+  }
+
   changeProject = (e) => { 
       let selectedTab = this.state.todos.find(index => Number(index.id) === Number(e.target.id))
       this.setState({
         current: selectedTab
       })
   }
-  
+
+  addDescription = (description) => {
+    this.setState(prevState => {
+      const updatedCurrent = prevState.current
+      updatedCurrent.description = description
+      return {
+        todos: prevState.todos,
+        current: updatedCurrent
+      }
+    })
+  }
 
   addTask = (item) => {
     this.setState(prevState => {
@@ -116,7 +143,10 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Header />
+        <Header 
+          todos={this.state.todos}
+          displayAll={this.allTasks}
+        />
         <ProjectModal 
           addProject={this.addProject}
           todos={this.state.todos} 
@@ -135,6 +165,7 @@ class App extends Component {
           checkTask={this.checkTask}
           deleteTask={this.deleteTask}
           deleteProject={this.deleteProject}
+          addDescription={this.addDescription}
         /> : null
         }
         

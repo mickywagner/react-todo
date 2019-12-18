@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import ProjectItem from './ProjectItem'
+import createProject from './../createProject'
 
 class Projects extends Component {
-    createProject() {
-        let modal = document.querySelector(".modal-container");
-        modal.classList.add('active')
-    }
 
     render() {   
         const projectsComponents = this.props.todos.map(todo =>
@@ -27,7 +24,7 @@ class Projects extends Component {
                 <div class="projects-container">
                  {projectsComponents}
             
-                    <button onClick={this.createProject}>Add Project</button>
+                    <button onClick={createProject}>Add Project</button>
                 </div>
             </div>
         )

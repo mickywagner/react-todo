@@ -1,6 +1,6 @@
 @import url('/font-awesome-4.6.3/css/font-awesome.min.css');
 :root {
-    --main-color: rgb(87,129,163);
+    --main-color: rgb(81, 120, 151);
     --second-color: rgb(140,165,185);
     --bg-color: rgba(57, 58, 59, 0.575);
 }
@@ -36,11 +36,29 @@ header {
     text-align: center;
     background: linear-gradient(var(--main-color), var(--second-color));
     grid-column: span 2;
+    display: flex;
 }
 
 header h1 {
     font-size: 30px;
     text-align: left;
+    flex: 1;
+    flex-grow: 5;
+}
+
+header button {
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin-left: 10px;
+    padding: 10px;
+    color: black;
+    background: linear-gradient(white 20%, var(--main-color));
+    border-radius: 15px;
+    border: 1px solid beige;
+}
+
+.inactive {
+    display: none;
 }
 
 /* 
@@ -66,14 +84,13 @@ header h1 {
     width: 100%;
     display: flex;
     flex-flow: column;
-
+    border-top: 1px solid white;
 }
 
 .projects h1 {
     margin-bottom: 15px;
     line-height: 30px;
     width: 100%;
-    border-bottom: 2px solid white;
 }
 
 .projects p {
@@ -83,24 +100,24 @@ header h1 {
 .projects p:hover {
     cursor: pointer;
     color: rgba(253, 249, 0, 0.884);
+    background: var(--main-color)
 }
 
-.projects button {
-    color: white;
-    text-shadow: 1px 1px black;
-    background: linear-gradient(var(--main-color), var(--second-color));
-    border: 1px solid var(--bg-color);
+.projects button, .tasks button {
+    color: black;
+    background: linear-gradient(white 5%, var(--main-color));
+    border: 1px solid beige;
     height: 30px;
     width: 100px;
     border-radius: 15px;
     font-weight: 600;
-    font-size: 15px;
     align-self: center;
     margin-top: 10px;
 }
 
 button:hover{
-    background: linear-gradient( var(--second-color), var(--main-color))
+    background: linear-gradient(var(--main-color), var(--second-color));
+    color: white;
 }
 
 button:focus {
@@ -111,12 +128,14 @@ button:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
     width: 100%;
-    background: rgba(39, 126, 207, 0.699);
-    padding: 5px 10px;
+}
+
+.project-item p {
+    background: var(--second-color);
+    padding: 10px 10px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    width: 100%;
 }
 
 .project-item span {
@@ -159,8 +178,13 @@ button:focus {
     margin-top: 10px;
 }
 
+.tasks input[type=text] {
+    width: 80%;
+}
+
 .tasks .date {
     float: right;
+    margin-left: 20px;
     font-size: 15px;
     font-weight: 400;
     text-align: right;
@@ -213,15 +237,11 @@ input::placeholder {
 }
 
 .btns button {
-    color: white;
-    text-shadow: 1px 1px black;
-    background: linear-gradient(var(--main-color), var(--second-color));
-    border: 1px solid var(--bg-color);
-    border-radius: 15px;
-    text-align: center;
     margin-left: 10px;
     font-size: 10px;
     padding: 10px;
+    height: auto;
+    width: auto;
     align-self: flex-end;
 }
 
@@ -348,7 +368,6 @@ input::placeholder {
 
     .projects:hover .projects-container {
         display: flex;
-        flex-flow: column;
         overflow: visible;
     }
 }
