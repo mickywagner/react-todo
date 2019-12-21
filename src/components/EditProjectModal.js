@@ -9,9 +9,9 @@ class EditProjectModal extends Component {
     submitProject = (e) => {
       e.preventDefault();
   
-      const { project, description, date, priority } = e.target
+      const { title, description, date, priority } = e.target
 
-      console.log(project.value)
+      this.props.editProject(title.value, description.value, date.value, priority.value)
   
       this.closeModal()
   };

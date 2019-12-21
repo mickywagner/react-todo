@@ -123,7 +123,7 @@ class App extends Component {
 
   deleteProject = (project) => {
     this.setState(prevState => {
-      const updatedTodos = prevState.todos
+      const updatedTodos = [...prevState.todos]
       const deletedProject = updatedTodos.find(todo => Number(todo.id) === Number(project))
       const index = updatedTodos.indexOf(deletedProject)
       updatedTodos.splice(index, 1)
@@ -144,7 +144,8 @@ class App extends Component {
 
   setEdit = (id) => {
     this.setState(prevState => {
-      const match = prevState.todos.find(todo => Number(todo.id) === Number(id))
+      const newArray = [...prevState.todos]
+      const match = newArray.find(todo => Number(todo.id) === Number(id))
       return {
         edit: match
       }
@@ -153,13 +154,29 @@ class App extends Component {
 
   changeEdit = (value, name) => {
     this.setState(prevState => {
-      const newEdit = prevState.edit
+      let newEdit = {...prevState.edit}
       newEdit[name] = value
       return {
         edit: newEdit
       }
     })
+  }
 
+  editProject = (title, description, dueDate, priority) => {
+    this.setState(prevState => {
+      const newTodos = [...prevState.todos]
+      const newEdit = {...prevState.edit}
+      let match = newTodos.find(todo => Number(todo.id) === newEdit.id)
+      let index = newTodos.indexOf(match)
+      match.title = title
+      match.description = description
+      match.dueDate = dueDate
+      match.priority = priority
+      newTodos[index] = match
+      return {
+        todos: newTodos
+      }
+    })
   }
 
   render() {
@@ -184,6 +201,7 @@ class App extends Component {
         <EditProjectModal 
           edit={this.state.edit}
           changeEdit={this.changeEdit}
+          editProject={this.editProject}
         />
 
         {this.state.todos.length > 0 ? 
