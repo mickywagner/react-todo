@@ -129,6 +129,7 @@ button:focus {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    
 }
 
 .project-item p {
@@ -136,15 +137,25 @@ button:focus {
     padding: 10px 10px;
     border-radius: 10px;
     width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
 }
 
-.project-item span {
-    flex: 50px;
-    text-align: right;
+.project-item svg {
+    margin-left: 5px;
 }
 
 .mobile-project-add {
     display: none;
+}
+
+.projects svg, .svg-wrapper .icon {
+    pointer-events: none;
+}
+
+.svg-wrapper {
+    background: black;
 }
 
 /* 
@@ -162,6 +173,13 @@ button:focus {
     display: flex;
     flex-flow: column;
     overflow: auto;
+}
+
+.tasks h1 {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .tasks h3 {
@@ -183,8 +201,6 @@ button:focus {
 }
 
 .tasks .date {
-    float: right;
-    margin-left: 20px;
     font-size: 15px;
     font-weight: 400;
     text-align: right;
@@ -194,6 +210,7 @@ button:focus {
     font-style: italic;
     font-size: 12px;
     margin-top: 5px;
+    text-align: left;
 }
 
 .tasks ul {
@@ -259,6 +276,7 @@ input::placeholder {
     Modal - New Project
 =========================================
 */
+
 
 
 .modal-container {

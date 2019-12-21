@@ -6,6 +6,7 @@ import Tasks from './components/Tasks'
 import ProjectModal from './components/ProjectModal';
 import userProject from './userProjects'
 import setLocalStorage from './setLocalStorage'
+import EditProjectModal from './components/EditProjectModal';
 
 
 class App extends Component {
@@ -13,8 +14,10 @@ class App extends Component {
     super()
     this.state = {
         todos: userProject,
-        current: userProject[0]
+        current: userProject[0],
+        edit: []
     }
+    this.setEdit = this.setEdit.bind(this)
   }
 
   componentDidMount() {
@@ -139,6 +142,18 @@ class App extends Component {
     })
   }
 
+  setEdit = (id) => {
+    this.setState(prevState => {
+      const match = prevState.todos.find(todo => Number(todo.id) === Number(id))
+      return {
+        edit: match
+      }
+    })
+  }
+
+  handleChange = () => {
+    console.log('hi')
+  }
 
   render() {
     return (
@@ -152,11 +167,18 @@ class App extends Component {
           todos={this.state.todos} 
           current={this.state.current} 
         />
+  
         <Projects 
           todos={this.state.todos} 
           current={this.state.current} 
           changeProject={this.changeProject}
+          setEdit={this.setEdit}
         />
+        <EditProjectModal 
+          edit={this.state.edit}
+          handleChange={this.handleChange}
+        />
+
         {this.state.todos.length > 0 ? 
           <Tasks 
           todos={this.state.todos} 

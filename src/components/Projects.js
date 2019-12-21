@@ -3,8 +3,9 @@ import ProjectItem from './ProjectItem'
 import createProject from './../createProject'
 
 class Projects extends Component {
+    
 
-    render() {   
+    render() {  
         const projectsComponents = this.props.todos.map(todo =>
             <ProjectItem 
                 key={todo.id}
@@ -14,6 +15,7 @@ class Projects extends Component {
                 priority={todo.priority}
                 tasks={todo.tasks}
                 changeProject={this.props.changeProject}
+                setEdit = {this.props.setEdit}
             />
         )
 
