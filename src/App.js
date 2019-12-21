@@ -151,8 +151,15 @@ class App extends Component {
     })
   }
 
-  handleChange = () => {
-    console.log('hi')
+  changeEdit = (value, name) => {
+    this.setState(prevState => {
+      const newEdit = prevState.edit
+      newEdit[name] = value
+      return {
+        edit: newEdit
+      }
+    })
+
   }
 
   render() {
@@ -176,7 +183,7 @@ class App extends Component {
         />
         <EditProjectModal 
           edit={this.state.edit}
-          handleChange={this.handleChange}
+          changeEdit={this.changeEdit}
         />
 
         {this.state.todos.length > 0 ? 

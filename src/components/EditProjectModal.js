@@ -17,7 +17,7 @@ class EditProjectModal extends Component {
   };
 
   handleChange = (e) => {
-    this.handleChange(e)
+    this.props.changeEdit(e.target.value, e.target.name)
   }
 
     render() {
@@ -27,8 +27,8 @@ class EditProjectModal extends Component {
               <span onClick={this.closeModal}>[X]</span>
               <h1>Edit Project</h1>
               <form name="edit-project" className="edit-project" onSubmit={this.submitProject}>
-                <input type="text" value={this.props.edit.title} name="project" onChange={(e) => this.handleChange}></input>
-                <input type="text" value={this.props.edit.description} name="description" onChange={(e) => this.handleChange}></input>
+                <input type="text" value={this.props.edit.title} name="title" onChange={this.handleChange}></input>
+                <input type="text" value={this.props.edit.description} name="description" onChange={this.handleChange}></input>
                 <input type="date" name="date"></input>
                 <select name="priority">
                   <option disabled>Priority</option>
