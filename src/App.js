@@ -8,7 +8,6 @@ import userProject from './userProjects'
 import setLocalStorage from './setLocalStorage'
 import EditProjectModal from './components/EditProjectModal';
 
-
 class App extends Component {
   constructor() {
     super()
@@ -85,7 +84,7 @@ class App extends Component {
 
   addTask = (item) => {
     this.setState(prevState => {
-      const updatedCurrent = prevState.current
+      const updatedCurrent = {...prevState.current}
       updatedCurrent.tasks.push(item)
       setLocalStorage(prevState.todos)
       return {
@@ -97,10 +96,14 @@ class App extends Component {
 
   deleteTask = (item) => {
     this.setState(prevState => {
-      const updatedCurrent = prevState.current
+      const updatedCurrent = {...prevState.current}
+      const updatedTodos = [...prevState.todos]
       const deletedTask = updatedCurrent.tasks.find(task => Number(task.id) === Number(item))
       const taskIndex = updatedCurrent.tasks.indexOf(deletedTask)
+
+
       updatedCurrent.tasks.splice(taskIndex, 1)
+      
       setLocalStorage(prevState.todos)
       return {
         todos: prevState.todos,
@@ -174,7 +177,8 @@ class App extends Component {
       match.priority = priority
       newTodos[index] = match
       return {
-        todos: newTodos
+        todos: newTodos,
+        current: newTodos[index]
       }
     })
   }

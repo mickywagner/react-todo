@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TaskItem from "./TaskItem";
+import { faGrinTongueSquint } from "@fortawesome/free-solid-svg-icons";
 
 class Tasks extends Component {
   submitTask = e => {
@@ -60,7 +61,7 @@ class Tasks extends Component {
     return (
       <div className="tasks">
         <h1>
-          {this.props.current.title}
+          {this.props.current.title} {this.props.current.priority}
           <span class="date">
             {this.props.current.dueDate
               ? "Due: " + this.props.current.dueDate
