@@ -1,3 +1,28 @@
+# React ToDo List
+
+<h3>Screenshots</h3>
+<img src="/README_images/Full.png">
+<img src="/README_images/Mobile.png'>
+
+<h3>About This Project</h3>
+<p>This is a "project based" to do list created with React I made for the Javascript course on <a href="https://www.theodinproject.com/">Odin Project</a>. Rather than just doing one list of tasks, the app allows you to add projects with sub-tasks. You can create, delete, and edit projects. Projects and tasks are stored in local storage at this point, not a database. This was the project for the frameworks section of the course so the idea was to choose to create this app with React, Angular or Vue. 
+</p>
+<p>Since creating this, I've done quite a bit more of React so I'm planning on implementing React Hooks and React Context as it would simply a lot of my components and logic. I'm also considering adding a database for this and playing around with the UI more.
+<p>Full project brief <a href="https://www.theodinproject.com/courses/javascript/lessons/frameworks">here</a></p>
+<p>Live version <a href="https://mickywagner.github.io/react-todo/">here</a>.</p>
+
+
+<h3>Technical Sheet</h3>
+
+<ul>
+  <li>HTML 5</li>
+  <li>CSS 3</li>
+  <li>Javascript ES6</li>
+  <li>React</li>
+</ul>
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

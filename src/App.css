@@ -2,7 +2,7 @@
 :root {
     --main-color: rgb(81, 120, 151);
     --second-color: rgb(140,165,185);
-    --bg-color: rgba(57, 58, 59, 0.575);
+    --bg-color: rgba(57, 58, 59, 0.8);
 }
 
 * {

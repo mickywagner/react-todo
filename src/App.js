@@ -97,6 +97,7 @@ class App extends Component {
   deleteTask = (item) => {
     this.setState(prevState => {
       const updatedCurrent = {...prevState.current}
+      
       const updatedTodos = [...prevState.todos]
       const deletedTask = updatedCurrent.tasks.find(task => Number(task.id) === Number(item))
       const taskIndex = updatedCurrent.tasks.indexOf(deletedTask)
