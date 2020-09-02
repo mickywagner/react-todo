@@ -1,8 +1,8 @@
 # React ToDo List
 
 <h3>Screenshots</h3>
-<img src="/README_images/Full.png">
-<img src="/README_images/Mobile.png">
+<img src="project.gif">
+<img src="tasks.gif">
 
 <h3>About This Project</h3>
 <p>This is a "project based" to do list created with React I made for the Javascript course on <a href="https://www.theodinproject.com/">Odin Project</a>. Rather than just doing one list of tasks, the app allows you to add projects with sub-tasks. You can create, delete, and edit projects. Projects and tasks are stored in local storage at this point, not a database. This was the project for the frameworks section of the course so the idea was to choose to create this app with React, Angular or Vue. 
