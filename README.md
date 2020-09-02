@@ -21,7 +21,9 @@
   <li>React</li>
 </ul>
 
-
+<h3>More images </h3>
+<img src="/README_images/Full.png">
+<img src="/README_images/Mobile.png">
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
